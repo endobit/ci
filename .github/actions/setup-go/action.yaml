@@ -1,0 +1,16 @@
+name: Setup Go
+description: Checkout code and setup Go with specified version
+
+inputs:
+  go-version:
+    description: 'Go version to use'
+    required: false
+    default: '1.26'
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v4
+      with:
+        go-version: ${{ inputs.go-version }}
