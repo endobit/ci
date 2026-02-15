@@ -23,11 +23,11 @@ Other repos in the endobit org reference workflows like:
 ```yaml
 jobs:
   ci:
-    uses: endobit/ci/.github/workflows/<workflow-name>.yaml@main
+    uses: endobit/ci/.github/workflows/<workflow-name>.yaml@v1
     secrets: inherit
 ```
 
-See `EXAMPLE.yaml` in each workflow directory for usage patterns.
+Use version tags (`@v1`) for stability. See `README.md` for versioning details.
 
 ## Available Workflows
 
@@ -45,26 +45,22 @@ Provides linting (golangci-lint) and testing with code coverage for Go projects.
 - `lint` - Runs golangci-lint with latest version
 - `test` - Runs tests with coverage and uploads to Codecov if token provided
 
-## Conventions
+## Workflow Conventions
 
 ### Adding New Workflows
 
 1. Create workflow file in `.github/workflows/`
-2. Use `workflow_call` trigger only
-3. Define inputs and secrets explicitly
+2. Use `workflow_call` trigger only (no `push`/`pull_request`)
+3. Define inputs and secrets explicitly with descriptions
 4. Create an EXAMPLE.yaml showing usage
-5. Make secrets optional where possible (use conditionals)
+5. Make secrets optional where possible
 6. Use meaningful job names that describe what they do
+7. Follow semantic versioning - tag releases appropriately
 
-### Workflow Naming
+### Naming and Structure
 
 - Use kebab-case for filenames (e.g., `go-lint-test.yaml`)
-- Workflow names should be descriptive of their purpose
-- Keep workflows focused on a single language/stack when possible
-
-### Inputs and Secrets
-
-- Provide sensible defaults for inputs
-- Make inputs optional where reasonable
-- Document all inputs and secrets with descriptions
-- Use conditional logic to handle missing secrets gracefully
+- Workflow names should describe their purpose
+- Keep workflows focused on a single language/stack
+- Provide sensible defaults for all inputs
+- Document all inputs and secrets
