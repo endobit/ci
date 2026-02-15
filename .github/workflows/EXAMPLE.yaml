@@ -1,0 +1,21 @@
+# EXAMPLE: How to consume this workflow in other repos
+# Place this in your repo at .github/workflows/ci.yaml
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  go-ci:
+    uses: endobit/ci/.github/workflows/go-lint-test.yaml@main
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    # Optional: override Go version
+    # with:
+    #   go-version: '1.27'
