@@ -1,5 +1,7 @@
 # Copilot Instructions for endobit/ci
 
+> **Note:** This repo follows org-wide conventions documented in `/COPILOT_INSTRUCTIONS.md`
+
 ## Repository Purpose
 
 This is a **centralized CI configuration library** for the endobit GitHub organization. It contains reusable GitHub Actions workflows that other repositories can consume.
@@ -44,24 +46,6 @@ Provides linting (golangci-lint) and testing with code coverage for Go projects.
 - `test` - Runs tests with coverage and uploads to Codecov if token provided
 
 ## Conventions
-
-### Git Commits
-
-Use [Conventional Commits](https://www.conventionalcommits.org/) format:
-
-```
-<type>: <description>
-
-[optional body]
-```
-
-Common types: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`
-
-Examples:
-- `feat: add python-lint-test workflow`
-- `fix: correct go-version input handling`
-- `docs: update EXAMPLE.yaml usage`
-- `chore: update golangci-lint to v9`
 
 ### Adding New Workflows
 
