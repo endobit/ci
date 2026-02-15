@@ -13,7 +13,7 @@ on:
 
 jobs:
   go-ci:
-    uses: endobit/ci/.github/workflows/go-lint-test.yaml@main
+    uses: endobit/ci/.github/workflows/go-lint-test.yaml@v1
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     # Optional: override Go version

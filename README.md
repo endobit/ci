@@ -14,6 +14,7 @@ In your repo's `.github/workflows/ci.yaml`:
 
 ```yaml
 name: CI
+
 on:
   push:
     branches:
@@ -21,10 +22,26 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
-  lint-test:
-    uses: endobit/ci/.github/workflows/go-lint-test.yaml@main
+  go-ci:
+    uses: endobit/ci/.github/workflows/go-lint-test.yaml@v1
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    # Optional: override defaults
+    # with:
+    #   go-version: '1.27'
 ```
+
+### Versioning
+
+Workflows are versioned using Git tags following semantic versioning:
+
+- `@v1` - Floating tag for latest v1.x.x (recommended - gets bug fixes automatically)
+- `@v1.0.0` - Pinned to specific version
+- `@main` - Latest development version (not recommended for production)
+
+**Breaking changes** increment the major version (v1 → v2).
 
 See `.github/workflows/EXAMPLE.yaml` for complete examples.
 
