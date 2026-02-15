@@ -17,7 +17,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: endobit/ci/.github/actions/setup-go@v1
+      - name: Setup
+        uses: endobit/ci/.github/actions/setup-go@v1
         with:
           go-version: ${{ inputs.go-version }}
       - name: Build
