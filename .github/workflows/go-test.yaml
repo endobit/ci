@@ -7,6 +7,11 @@ on:
         description: 'Go version to use'
         required: false
         type: string
+      path:
+        description: 'Path to test'
+        required: false
+        type: string
+        default: './...'
     secrets:
       CODECOV_TOKEN:
         description: 'Codecov token for coverage upload'
@@ -19,7 +24,7 @@ jobs:
       - uses: endobit/ci/.github/actions/setup-go@v1
         with:
           go-version: ${{ inputs.go-version }}
-      - run: go test -v ./... -coverprofile=coverage.txt -covermode=count
+      - run: go test -v ${{ inputs.path }} -coverprofile=coverage.txt -covermode=count
       - uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
