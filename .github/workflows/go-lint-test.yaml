@@ -34,7 +34,6 @@ jobs:
           go-version: ${{ inputs.go-version }}
       - run: go test -v ./... -coverprofile=coverage.txt -covermode=count
       - uses: codecov/codecov-action@v5
-        if: ${{ secrets.CODECOV_TOKEN != '' }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
