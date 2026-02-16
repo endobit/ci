@@ -8,6 +8,10 @@ on:
         required: false
         type: string
         default: '1.26'
+      go-experiment:
+        description: 'GOEXPERIMENT value'
+        required: false
+        type: string
       path:
         description: 'Path to build'
         required: false
@@ -23,4 +27,6 @@ jobs:
         with:
           go-version: ${{ inputs.go-version }}
       - name: Build
+        env:
+          GOEXPERIMENT: $${{ inputs.go-experiment }}
         run: go build ${{ inputs.path }}

@@ -8,6 +8,10 @@ on:
         required: false
         type: string
         default: '1.26'
+      go-experiment:
+        description: 'GOEXPERIMENT value'
+        required: false
+        type: string
       path:
         description: 'Path to test'
         required: false
@@ -27,6 +31,8 @@ jobs:
         with:
           go-version: ${{ inputs.go-version }}
       - name: Test
+        env:
+          GOEXPERIMENT: $${{ inputs.go-experiment }}
         run: go test -v ${{ inputs.path }} -coverprofile=coverage.txt -covermode=count
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v5

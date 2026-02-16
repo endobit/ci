@@ -8,6 +8,10 @@ on:
         required: false
         type: string
         default: '1.26'
+      go-experiment:
+        description: 'GOEXPERIMENT value'
+        required: false
+        type: string
 
 jobs:
   lint:
@@ -18,6 +22,8 @@ jobs:
         with:
           go-version: ${{ inputs.go-version }}
       - name: Lint
+        env:
+          GOEXPERIMENT: $${{ inputs.go-experiment }}
         uses: golangci/golangci-lint-action@v8
         with:
           version: latest
