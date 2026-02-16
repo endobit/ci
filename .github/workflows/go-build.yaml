@@ -28,5 +28,5 @@ jobs:
           go-version: ${{ inputs.go-version }}
       - name: Build
         env:
-          GOEXPERIMENT: $${{ inputs.go-experiment }}
+          GOEXPERIMENT: ${{ inputs.go-experiment }}
         run: go build ${{ inputs.path }}

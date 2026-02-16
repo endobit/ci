@@ -32,7 +32,7 @@ jobs:
           go-version: ${{ inputs.go-version }}
       - name: Test
         env:
-          GOEXPERIMENT: $${{ inputs.go-experiment }}
+          GOEXPERIMENT: ${{ inputs.go-experiment }}
         run: go test -v ${{ inputs.path }} -coverprofile=coverage.txt -covermode=count
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v5

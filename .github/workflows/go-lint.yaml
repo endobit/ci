@@ -23,7 +23,7 @@ jobs:
           go-version: ${{ inputs.go-version }}
       - name: Lint
         env:
-          GOEXPERIMENT: $${{ inputs.go-experiment }}
+          GOEXPERIMENT: ${{ inputs.go-experiment }}
         uses: golangci/golangci-lint-action@v8
         with:
           version: latest
